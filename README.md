@@ -1,6 +1,6 @@
 # JungleJim 🌴
 
-Multi-agent worktree workflow for high-concurrency human and AI collaboration.
+Multi-agent worktree workflow for concurrent human and AI collaboration.
 
 ## Quick Start / One-Line Installation
 
@@ -23,8 +23,8 @@ Alternatively, if you have this repository cloned locally:
 
 ## Workflow Overview
 
-- **`git agent-start <task-name>`**: Spawns an isolated worktree at `.worktrees/<task-name>` on branch `feature/<task-name>`.
+- **`git agent-start <task-name>`**: Spawns an isolated worktree at `.worktrees/<task-name>` on branch `<task-name>`.
 - **`git jims`**: Lists all active agent worktrees across the repository.
-- **`git agent-stop <task-name>`**: Removes the worktree and cleans up the local feature branch after merging.
+- **`git agent-stop <task-name>`**: Removes the worktree and cleans up the local branch after merging.
 
 See [JUNGLEJIM.md](JUNGLEJIM.md) for full architecture details.

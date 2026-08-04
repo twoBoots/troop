@@ -2,13 +2,13 @@
 
 ## Overview
 
-**JungleJim** is a worktree-based workflow designed for high-concurrency development where human developers and autonomous AI agents collaborate without stepping on each other's toes.
+**JungleJim** is a worktree-based workflow for concurrent development where human developers and autonomous AI agents collaborate without stepping on each other's toes.
 
 In the JungleJim paradigm:
 * **The Repository** is the jungle.
 * **Worktrees** are the trees in the jungle.
 * **Code Monkeys** refer collectively to human developers and AI agents.
-* **Shoresys** represents human developers operating in the root workspace or standard checkout.
+* **Shoresy** represents a human developer operating in the root workspace or standard checkout.
 * **Jims** (Jim 1, Jim 2, etc.) refers to individual AI coding agents operating in isolated worktrees.
 
 ---
@@ -49,7 +49,7 @@ git agent-start <task-name>
 What this does under the hood:
 1. Fetches `origin/main` (if a remote exists).
 2. Spawns a worktree at `.worktrees/<task-name>`.
-3. Creates branch `feature/<task-name>` off `origin/main` (falling back to local `main` if offline).
+3. Creates branch `<task-name>` off `origin/main` (falling back to local `main` if offline).
 
 ### 3. Listing Active Jims (`jims`)
 To see all Jims actively working in trees across the jungle:
@@ -68,4 +68,4 @@ git agent-stop <task-name>
 ```
 What this does:
 1. Removes the `.worktrees/<task-name>` directory.
-2. Deletes the local `feature/<task-name>` branch.
+2. Deletes the local `<task-name>` branch.
