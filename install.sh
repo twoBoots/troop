@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -e
 
-# JungleJim Remote/Local Installer Script
+# Troop Remote/Local Installer Script
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/twoboots/junglejim/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/twoboots/troop/main/install.sh | bash
 #   or: ./install.sh [target_directory]
 
-RAW_BASE_URL="https://raw.githubusercontent.com/twoboots/junglejim/main"
+RAW_BASE_URL="https://raw.githubusercontent.com/twoboots/troop/main"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}" 2>/dev/null)" && pwd || true)"
 TARGET_DIR="${1:-$(pwd)}"
 
@@ -18,7 +18,7 @@ if [ ! -d ".git" ] && ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; the
     exit 1
 fi
 
-echo "🌴 Installing JungleJim into $(pwd)..."
+echo "🐒 Installing Troop into $(pwd)..."
 
 # Helper function to fetch or copy a file
 get_file() {
@@ -43,23 +43,23 @@ echo "  [✓] Copied .gitaliases and updated local Git config"
 # 2. Ensure .worktrees/ is in .gitignore
 if [ -f ".gitignore" ]; then
     if ! grep -qs "^\.worktrees/" .gitignore; then
-        echo -e "\n# JungleJim Worktrees\n.worktrees/" >> .gitignore
+        echo -e "\n# Troop Worktrees\n.worktrees/" >> .gitignore
         echo "  [✓] Appended .worktrees/ to existing .gitignore"
     else
         echo "  [✓] .worktrees/ already present in .gitignore"
     fi
 else
-    echo -e "# JungleJim Worktrees\n.worktrees/" > .gitignore
+    echo -e "# Troop Worktrees\n.worktrees/" > .gitignore
     echo "  [✓] Created .gitignore with .worktrees/"
 fi
 
-# 3. Fetch JUNGLEJIM.md specification
-get_file "JUNGLEJIM.md"
-echo "  [✓] Installed JUNGLEJIM.md specification"
+# 3. Fetch TROOP.md specification
+get_file "TROOP.md"
+echo "  [✓] Installed TROOP.md specification"
 
 # 4. Setup AGENTS.md
 if [ -f "AGENTS.md" ]; then
-    if ! grep -qs "JungleJim" AGENTS.md; then
+    if ! grep -qs "Troop" AGENTS.md; then
         TMP_TEMPLATE="$(mktemp)"
         if [ -n "$SCRIPT_DIR" ] && [ -f "$SCRIPT_DIR/AGENTS.template.md" ]; then
             cp "$SCRIPT_DIR/AGENTS.template.md" "$TMP_TEMPLATE"
@@ -72,9 +72,9 @@ if [ -f "AGENTS.md" ]; then
         echo "" >> AGENTS.md
         cat "$TMP_TEMPLATE" >> AGENTS.md
         rm -f "$TMP_TEMPLATE"
-        echo "  [✓] Appended JungleJim rules to existing AGENTS.md"
+        echo "  [✓] Appended Troop rules to existing AGENTS.md"
     else
-        echo "  [✓] JungleJim rules already present in AGENTS.md"
+        echo "  [✓] Troop rules already present in AGENTS.md"
     fi
 else
     get_file "AGENTS.template.md"
@@ -83,8 +83,8 @@ else
 fi
 
 echo ""
-echo "🌴 JungleJim successfully installed!"
+echo "🐒 Troop successfully installed!"
 echo "Available Git commands:"
 echo "  git agent-start <task-name>  - Spawn an isolated worktree in .worktrees/<task-name>"
-echo "  git jims                     - List active worktrees in the jungle"
+echo "  git troop                    - List active worktrees in the troop"
 echo "  git agent-stop <task-name>   - Remove worktree and delete local branch"
