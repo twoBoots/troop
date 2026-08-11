@@ -1,27 +1,27 @@
-# Troop Architecture (Worktrees & Code Monkeys)
+# Troop Architecture (Monkeys & Trees)
 
 ## Overview
 
-**Troop** is a worktree-based workflow for concurrent development where human developers and autonomous AI agents collaborate without stepping on each other's toes.
+**Troop** is a worktree-based workflow for concurrent development where human developers and autonomous AI agents collaborate as a **troop of code monkeys working in trees**.
 
 In the Troop paradigm:
-* **The Repository** is the troop's home base.
-* **Worktrees** are isolated environments for parallel development tasks.
-* **Code Monkeys** refer collectively to all developers, human developers and AI agents alike.
-* **Troop Members** work concurrently across separate worktrees or the main workspace.
+* **The Troop**: The collective group of Code Monkeys (human and AI developers) working in parallel.
+* **Code Monkeys**: All developers—human or AI—are code monkeys.
+* **Trees (Worktrees)**: Isolated Git worktrees (`.worktrees/`) where monkeys climb up to work on tasks without swinging into each other.
+* **The Main Trunk**: The root repository workspace (`main` branch) shared by the troop.
 
 ---
 
 ## Workspace Structure
 
-Worktrees for agents are isolated in a hidden `.worktrees/` directory at the project root.
+Trees (worktrees) for code monkeys are isolated in a hidden `.worktrees/` canopy at the project root.
 
 ```text
 my-project/
 ├── .git/                 # Core Git metadata
-├── .worktrees/           # Hidden worktree directory for agents
-│   ├── agent-1-auth/     # Isolated worktree for task 1
-│   └── agent-2-billing/  # Isolated worktree for task 2
+├── .worktrees/           # Hidden tree canopy for troop monkeys
+│   ├── monkey-1-auth/    # Isolated tree for monkey 1
+│   └── monkey-2-billing/ # Isolated tree for monkey 2
 ├── src/                  # Main application source code
 ├── .gitaliases           # Shared Git aliases for Troop
 ├── .gitignore            # Ignores .worktrees/
@@ -40,28 +40,28 @@ To initialize Troop in your repository:
 curl -fsSL https://raw.githubusercontent.com/twoboots/troop/main/install.sh | bash
 ```
 
-### 2. Spawning an Agent (`agent-start`)
-When a new task is assigned:
+### 2. Spawning a Monkey Worktree (`agent-start`)
+When a new task is assigned to a code monkey:
 ```bash
 git agent-start <task-name>
 ```
 What this does under the hood:
 1. Fetches `origin/main` (if a remote exists).
-2. Spawns a worktree at `.worktrees/<task-name>`.
+2. Spawns a new tree (worktree) at `.worktrees/<task-name>`.
 3. Creates branch `<task-name>` off `origin/main` (falling back to local `main` if offline).
 
-### 3. Listing Active Troop Worktrees (`troop`)
-To see all active worktrees across the troop:
+### 3. Listing Monkeys in Trees (`troop`)
+To see all monkeys actively working in trees across the troop:
 ```bash
 git troop
 ```
 
 ### 4. Execution & Isolation
-* An agent or code monkey navigates to its assigned worktree (`.worktrees/<task-name>`).
-* Human code monkeys can continue working in the root workspace on `main` or another branch without interference.
+* A code monkey navigates up to its assigned tree (`.worktrees/<task-name>`).
+* Other troop members (human or AI code monkeys) continue working in the main trunk or their own trees without interference.
 
 ### 5. Teardown (`agent-stop`)
-Once work is committed, pushed, and merged:
+Once a monkey's work is committed, pushed, and merged:
 ```bash
 git agent-stop <task-name>
 ```

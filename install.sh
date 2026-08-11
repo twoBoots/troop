@@ -85,6 +85,6 @@ fi
 echo ""
 echo "🐒 Troop successfully installed!"
 echo "Available Git commands:"
-echo "  git agent-start <task-name>  - Spawn an isolated worktree in .worktrees/<task-name>"
-echo "  git troop                    - List active worktrees in the troop"
+echo "  git agent-start <task-name>  - Spawn an isolated tree in .worktrees/<task-name>"
+echo "  git troop                    - List active monkeys working in trees"
 echo "  git agent-stop <task-name>   - Remove worktree and delete local branch"

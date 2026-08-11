@@ -1,6 +1,12 @@
 # Troop 🐒
 
-Multi-agent worktree workflow for concurrent human and AI collaboration.
+Multi-agent worktree workflow for a troop of code monkeys working in trees.
+
+## Overview
+
+**Troop** brings structure to concurrent human and AI development:
+- **The Troop**: All developers (human or AI) are code monkeys.
+- **The Trees**: Isolated Git worktrees (`.worktrees/`) where monkeys work concurrently without stepping on each other's toes.
 
 ## Quick Start / One-Line Installation
 
@@ -23,8 +29,8 @@ Alternatively, if you have this repository cloned locally:
 
 ## Workflow Overview
 
-- **`git agent-start <task-name>`**: Spawns an isolated worktree at `.worktrees/<task-name>` on branch `<task-name>`.
-- **`git troop`**: Lists all active agent worktrees across the repository.
+- **`git agent-start <task-name>`**: Spawns an isolated tree (worktree) at `.worktrees/<task-name>` on branch `<task-name>`.
+- **`git troop`**: Lists all active monkeys working in trees across the repository.
 - **`git agent-stop <task-name>`**: Removes the worktree and cleans up the local branch after merging.
 
 See [TROOP.md](TROOP.md) for full architecture details.
