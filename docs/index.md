@@ -25,7 +25,7 @@ features:
     details: Install into any repository via curl, configuring Git aliases and agent rules instantly.
   - icon: ⚙️
     title: Cooper SDD Bedrock
-    details: Powers [Cooper](https://github.com/twoBoots/cooper) Spec-Driven Development as its core worktree isolation layer.
+    details: Powers <a href="https://twoboots.github.io/cooper/" target="_blank" rel="noreferrer">Cooper</a> Spec-Driven Development as its core worktree isolation layer.
 ---
 
 ## Quickstart
