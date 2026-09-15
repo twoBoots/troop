@@ -4,6 +4,8 @@ Multi-agent worktree workflow for a troop of code monkeys working in trees.
 
 ## Overview
 
+> 📖 **Documentation & Live Site**: Visit the [Troop Documentation Site](https://twoboots.github.io/troop/) for interactive guides, diagrams, and architecture walkthroughs.
+
 **Troop** brings structure to concurrent human and AI development:
 - **The Troop**: All developers (human or AI) are code monkeys.
 - **The Trees**: Isolated Git worktrees (`.worktrees/`) where monkeys work concurrently without stepping on each other's toes.
