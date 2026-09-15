@@ -30,3 +30,13 @@ test('VitePress custom theme styles feature card links', () => {
   assert.ok(content.includes('color: var(--vp-c-brand-1)'), 'must use brand color for feature links');
 });
 
+test('VitePress custom theme defines responsive lifecycle flow diagrams', () => {
+  const cssPath = path.join(repoRoot, 'docs', '.vitepress', 'theme', 'custom.css');
+  assert.ok(fs.existsSync(cssPath), 'docs/.vitepress/theme/custom.css must exist');
+
+  const content = fs.readFileSync(cssPath, 'utf8');
+  assert.ok(content.includes('.lifecycle-flow'), 'custom.css must define .lifecycle-flow');
+  assert.ok(content.includes('.lifecycle-card'), 'custom.css must define .lifecycle-card');
+  assert.ok(content.includes('@media (max-width: 640px)'), 'custom.css must define mobile responsive breakpoint');
+});
+

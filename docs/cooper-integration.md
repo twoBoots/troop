@@ -14,18 +14,19 @@ Cooper pairs two mechanisms to prevent agent drift and corruption:
 
 ## Architecture Synergy
 
-```text
-  ┌─────────────────────────────────┐
-  │  Cooper (Spec-Driven Dev)       │
-  │  Living Specs & Spec Deltas     │
-  └────────────────┬────────────────┘
-                   │ runs inside
-                   ▼
-  ┌─────────────────────────────────┐
-  │  Troop (Worktree Isolation)     │
-  │  .worktrees/<track_id>/         │
-  └─────────────────────────────────┘
-```
+<div class="lifecycle-flow">
+  <div class="lifecycle-card">
+    <span class="lifecycle-badge">Framework</span>
+    <div class="lifecycle-step">Cooper SDD</div>
+    <div class="lifecycle-sub">Living Specs &amp; Spec Deltas</div>
+  </div>
+  <div class="lifecycle-arrow">→</div>
+  <div class="lifecycle-card">
+    <span class="lifecycle-badge">Execution Layer</span>
+    <div class="lifecycle-step">Troop Trees</div>
+    <div class="lifecycle-sub">Isolated .worktrees/&lt;track_id&gt;</div>
+  </div>
+</div>
 
 ---
 

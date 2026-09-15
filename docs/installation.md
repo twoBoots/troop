@@ -18,12 +18,31 @@ curl -fsSL https://raw.githubusercontent.com/twoboots/troop/main/install.sh | ba
 
 The `install.sh` script coordinates the four foundational components of the Troop architecture:
 
-```text
-  ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
-  │ 1. .gitaliases  │ ────> │ 2. .gitignore   │ ────> │ 3. TROOP.md     │ ────> │ 4. AGENTS.md    │
-  │ include.path    │       │ Exclude trees   │       │ Architecture    │       │ Agent Rules     │
-  └─────────────────┘       └─────────────────┘       └─────────────────┘       └─────────────────┘
-```
+<div class="lifecycle-flow">
+  <div class="lifecycle-card">
+    <span class="lifecycle-badge">Step 1</span>
+    <div class="lifecycle-step">.gitaliases</div>
+    <div class="lifecycle-sub">Git include.path</div>
+  </div>
+  <div class="lifecycle-arrow">→</div>
+  <div class="lifecycle-card">
+    <span class="lifecycle-badge">Step 2</span>
+    <div class="lifecycle-step">.gitignore</div>
+    <div class="lifecycle-sub">Exclude .worktrees/</div>
+  </div>
+  <div class="lifecycle-arrow">→</div>
+  <div class="lifecycle-card">
+    <span class="lifecycle-badge">Step 3</span>
+    <div class="lifecycle-step">TROOP.md</div>
+    <div class="lifecycle-sub">Architecture Spec</div>
+  </div>
+  <div class="lifecycle-arrow">→</div>
+  <div class="lifecycle-card">
+    <span class="lifecycle-badge">Step 4</span>
+    <div class="lifecycle-step">AGENTS.md</div>
+    <div class="lifecycle-sub">Agent Directives</div>
+  </div>
+</div>
 
 ### 1. Configure Git Aliases
 - Fetches or copies `.gitaliases` into the project root.

@@ -6,12 +6,31 @@
 
 ## The Complete Lifecycle
 
-```text
-  ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
-  │   install.sh    │ ────> │ git agent-start │ ────> │ Commit & Push   │ ────> │ git agent-stop  │
-  │ Configure Git   │       │ Spawn Worktree  │       │ Open Pull Req   │       │ Teardown Branch │
-  └─────────────────┘       └─────────────────┘       └─────────────────┘       └─────────────────┘
-```
+<div class="lifecycle-flow">
+  <div class="lifecycle-card">
+    <span class="lifecycle-badge">Phase 1</span>
+    <div class="lifecycle-step">install.sh</div>
+    <div class="lifecycle-sub">Configure Git Aliases</div>
+  </div>
+  <div class="lifecycle-arrow">→</div>
+  <div class="lifecycle-card">
+    <span class="lifecycle-badge">Phase 2</span>
+    <div class="lifecycle-step">git agent-start</div>
+    <div class="lifecycle-sub">Spawn Isolated Worktree</div>
+  </div>
+  <div class="lifecycle-arrow">→</div>
+  <div class="lifecycle-card">
+    <span class="lifecycle-badge">Phase 3</span>
+    <div class="lifecycle-step">Commit &amp; Push</div>
+    <div class="lifecycle-sub">Open Pull Request</div>
+  </div>
+  <div class="lifecycle-arrow">→</div>
+  <div class="lifecycle-card">
+    <span class="lifecycle-badge">Phase 4</span>
+    <div class="lifecycle-step">git agent-stop</div>
+    <div class="lifecycle-sub">Teardown &amp; Delete Branch</div>
+  </div>
+</div>
 
 ---
 
