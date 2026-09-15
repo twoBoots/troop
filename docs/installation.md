@@ -1,6 +1,6 @@
 # Troop Installation & Setup Guide
 
-[Troop](https://github.com/twoBoots/troop) can be installed into any existing or new Git repository in seconds via the automated installer or manual configuration.
+Install [Troop](https://github.com/twoBoots/troop) via the automated installer or manual configuration:
 
 ---
 
@@ -12,24 +12,17 @@ Navigate to the root of your target Git project and run:
 curl -fsSL https://raw.githubusercontent.com/twoboots/troop/main/install.sh | bash
 ```
 
-Alternatively, if you have cloned the [Troop](https://github.com/twoBoots/troop) repository locally:
-
-```bash
-/path/to/troop/install.sh /path/to/your-project
-```
-
 ---
 
 ## What `install.sh` Does
 
 The `install.sh` script coordinates the four foundational components of the Troop architecture:
 
-```mermaid
-flowchart TD
-    A["Run install.sh"] --> B["1. Copy .gitaliases & configure git include.path"]
-    B --> C["2. Append .worktrees/ to .gitignore"]
-    C --> D["3. Download TROOP.md architecture specification"]
-    D --> E["4. Inject Troop directives into AGENTS.md"]
+```text
+  ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
+  │ 1. .gitaliases  │ ────> │ 2. .gitignore   │ ────> │ 3. TROOP.md     │ ────> │ 4. AGENTS.md    │
+  │ include.path    │       │ Exclude trees   │       │ Architecture    │       │ Agent Rules     │
+  └─────────────────┘       └─────────────────┘       └─────────────────┘       └─────────────────┘
 ```
 
 ### 1. Configure Git Aliases
@@ -80,5 +73,4 @@ In air-gapped or restricted environments, you can manually configure Troop:
 
 ## Integration with Cooper
 
-If your project utilizes Spec-Driven Development via [Cooper](https://github.com/twoBoots/cooper), running Cooper's installer automatically invokes Troop's setup and configures worktrees natively. See the [Cooper Integration Guide](./cooper-integration.md).
-
+If your project uses Spec-Driven Development via [Cooper](https://twoboots.github.io/cooper/), running Cooper's installer automatically configures Troop worktrees. See the [Cooper Integration Guide](./cooper-integration.md).

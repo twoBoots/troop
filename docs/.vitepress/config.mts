@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Troop',
-  description: 'Multi-Agent Git Worktree Workflow for Autonomous AI Agents & Developers',
+  description: 'Multi-Agent Git Worktree Workflow for Concurrent Development',
   base: process.env.VITEPRESS_BASE || '/troop/',
   themeConfig: {
     siteTitle: 'Troop 🐒',

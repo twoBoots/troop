@@ -18,7 +18,7 @@
 
 ## Repository Structure
 
-When Troop is initialized, the project root gains a lightweight layer of Git coordination files without altering existing build tools or application code:
+When Troop is initialised, the project root contains:
 
 ```text
 my-project/
@@ -38,17 +38,17 @@ my-project/
 
 ## Git Worktree Mechanics
 
-Git worktrees allow multiple working directories to be linked to a single Git repository. Unlike cloning a repo multiple times:
+Git worktrees link multiple working directories to a single repository:
 
 1. **Shared Object Database**: All trees share `.git/objects`. Commits, blobs, and trees created in one worktree are immediately accessible everywhere with zero disk duplication.
 2. **Dedicated `HEAD` & Index**: Each tree maintains its own `.git` link file pointing into `.git/worktrees/<name>/`. This provides an isolated `HEAD`, staging index, and working copy.
-3. **Instant Creation & Teardown**: Spawning a worktree takes milliseconds because no repo history needs to be cloned or copied.
+3. **Instant Creation & Teardown**: Spawning a worktree is instantaneous because history is shared rather than copied.
 
 ---
 
 ## Anatomy of `.gitaliases`
 
-Troop encapsulates worktree complexity into three simple Git aliases defined in `.gitaliases`:
+Troop defines three Git aliases in `.gitaliases`:
 
 ```ini
 [alias]
@@ -64,7 +64,7 @@ Troop encapsulates worktree complexity into three simple Git aliases defined in 
 
 ### `agent-start <task-name>`
 - Attempts to run `git fetch origin main 2>/dev/null || true` to pull the latest remote trunk state.
-- Gracefully falls back to the local `main` revision if working offline.
+- Falls back to the local `main` revision if offline or origin is unreachable.
 - Runs `git worktree add .worktrees/$1 -b $1 $BASE` to create the tree directory and switch branch in one atomic operation.
 
 ### `agent-stop <task-name>`
@@ -78,5 +78,4 @@ Troop encapsulates worktree complexity into three simple Git aliases defined in 
 
 ## Upstream Integration with Cooper
 
-Troop is designed to be fully modular and agnostic. It works standalone for any Git project, and also serves as the foundational worktree engine for [Cooper](https://github.com/twoBoots/cooper), which layers Spec-Driven Development (SDD), living capability specs, and TDD quality gates on top of Troop trees.
-
+Troop works standalone in any Git project and provides the worktree isolation foundation for [Cooper](https://twoboots.github.io/cooper/).
