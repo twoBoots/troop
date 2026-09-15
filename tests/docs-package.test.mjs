@@ -27,3 +27,4 @@ test('package-lock.json exists ensuring reproducible builds', () => {
   const lockPath = path.join(repoRoot, 'package-lock.json');
   assert.ok(fs.existsSync(lockPath), 'package-lock.json must exist');
 });
+

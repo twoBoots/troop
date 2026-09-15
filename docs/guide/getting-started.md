@@ -105,3 +105,4 @@ For higher-level governance, test-driven development (TDD), and living capabilit
 
 - Explore the complete [Workflow & Lifecycle](./workflow.md).
 - Dive into the [Architecture Deep Dive](../architecture.md).
+

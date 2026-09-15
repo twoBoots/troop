@@ -81,3 +81,4 @@ In air-gapped or restricted environments, you can manually configure Troop:
 ## Integration with Cooper
 
 If your project utilizes Spec-Driven Development via [Cooper](https://github.com/twoBoots/cooper), running Cooper's installer automatically invokes Troop's setup and configures worktrees natively. See the [Cooper Integration Guide](./cooper-integration.md).
+

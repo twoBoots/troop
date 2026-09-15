@@ -72,3 +72,4 @@ When working on a Cooper track, agent skills map directly onto Troop commands:
 - [Cooper Documentation](https://twoboots.github.io/cooper/)
 - [Troop Repository](https://github.com/twoBoots/troop)
 - [Troop Workflow Guide](./guide/workflow.md)
+

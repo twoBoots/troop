@@ -124,3 +124,4 @@ Each agent can test, run build pipelines, and commit independently without race 
 A human developer can inspect an agent's work at any time by simply navigating into `.worktrees/<task-name>`, reviewing unstaged edits, running tests, or offering interactive feedback.
 
 When coupled with Spec-Driven Development, explore how Troop powers the [Cooper SDD Framework](../cooper-integration.md).
+

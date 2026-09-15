@@ -79,3 +79,4 @@ Troop encapsulates worktree complexity into three simple Git aliases defined in 
 ## Upstream Integration with Cooper
 
 Troop is designed to be fully modular and agnostic. It works standalone for any Git project, and also serves as the foundational worktree engine for [Cooper](https://github.com/twoBoots/cooper), which layers Spec-Driven Development (SDD), living capability specs, and TDD quality gates on top of Troop trees.
+

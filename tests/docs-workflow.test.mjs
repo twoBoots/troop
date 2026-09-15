@@ -29,3 +29,4 @@ test('GitHub Actions workflow .github/workflows/pages.yml exists and has proper 
   assert.ok(content.includes('npm ci'), 'must use npm ci for reproducible build');
   assert.ok(content.includes('npm run docs:build'), 'must execute npm run docs:build');
 });
+
