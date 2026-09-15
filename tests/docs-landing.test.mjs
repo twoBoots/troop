@@ -32,3 +32,4 @@ test('Landing page docs/index.md exists with required layout and sections', () =
   // Workflow section
   assert.ok(content.includes('Lifecycle') || content.includes('Workflow'), 'must include workflow or lifecycle section');
 });
+

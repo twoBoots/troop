@@ -16,13 +16,13 @@ hero:
 features:
   - icon: 🐒
     title: The Troop & Monkeys
-    details: Treat all developers—human or AI—as code monkeys collaborating in parallel without stepped-on toes or dirty context.
+    details: All developers, human or AI, are code monkeys collaborating in parallel without stepping on each others workspaces.
   - icon: 🌲
     title: Isolated Trees (Worktrees)
-    details: Ephemeral Git worktrees (.worktrees/) give each monkey an independent branch and working directory rooted in the main trunk.
+    details: Ephemeral Git worktrees (`.worktrees/`) give each monkey an independent branch and working directory.
   - icon: ⚡
     title: Fast One-Line Setup
-    details: Install into any repository in seconds via curl or local shell script, configuring Git aliases and agent rules instantly.
+    details: Install into any repository via curl, configuring Git aliases and agent rules instantly.
   - icon: ⚙️
     title: Cooper SDD Bedrock
     details: Powers [Cooper](https://github.com/twoBoots/cooper) Spec-Driven Development as its core worktree isolation layer.
@@ -36,17 +36,11 @@ Install Troop into any Git repository with a single command:
 curl -fsSL https://raw.githubusercontent.com/twoboots/troop/main/install.sh | bash
 ```
 
-Alternatively, run from a local clone of Troop:
-
-```bash
-/path/to/troop/install.sh /path/to/your-project
-```
-
 ---
 
 ## Core Git Commands
 
-Troop exposes three focused Git aliases designed for maximum developer ergonomics:
+Troop provides three core Git aliases:
 
 | Command | Purpose |
 | :--- | :--- |
@@ -58,18 +52,12 @@ Troop exposes three focused Git aliases designed for maximum developer ergonomic
 
 ## The Troop Lifecycle
 
-```mermaid
-flowchart LR
-    A["Main Trunk (main)"] -->|"git agent-start <task>"| B["Isolated Tree (.worktrees/<task>)"]
-    B -->|"Execute & Commit"| C["Feature Branch (<task>)"]
-    C -->|"PR & Merge"| A
-    C -->|"git agent-stop <task>"| D["Clean Worktree Teardown"]
+```text
+  ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
+  │   Main Trunk    │ ────> │  Isolated Tree  │ ────> │ Feature Branch  │ ────> │ Worktree Remove │
+  │     (main)      │       │  agent-start    │       │ Commit & Push   │       │   agent-stop    │
+  └─────────────────┘       └─────────────────┘       └─────────────────┘       └─────────────────┘
 ```
-
-1. **Spawn Tree (`git agent-start <task-name>`)**: Fetches latest `origin/main`, creates `.worktrees/<task-name>`, and checks out a new branch.
-2. **Climb into Tree**: Monkeys navigate into `.worktrees/<task-name>` and develop in complete isolation without trunk pollution.
-3. **List Active Trees (`git troop`)**: See all monkeys currently working in trees.
-4. **Merge & Teardown (`git agent-stop <task-name>`)**: Once changes are merged, safely remove the worktree and prune the local branch.
 
 ---
 

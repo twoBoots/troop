@@ -20,3 +20,4 @@ test('VitePress config file exists and contains required site structure', async 
   assert.ok(content.includes('nav:'), 'themeConfig must define navigation bar');
   assert.ok(content.includes('sidebar:'), 'themeConfig must define sidebar');
 });
+

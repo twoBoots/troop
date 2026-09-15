@@ -1,26 +1,22 @@
 # Troop Workflow & Lifecycle
 
-The [Troop](https://github.com/twoBoots/troop) workflow is designed to support concurrent software engineering where human engineers and autonomous AI agents collaborate in isolated branches without interfering with each other's workspaces.
+[Troop](https://github.com/twoBoots/troop) enables concurrent development across human engineers and autonomous AI agents through isolated worktree branches.
 
 ---
 
 ## The Complete Lifecycle
 
-```mermaid
-flowchart TD
-    A["Install Troop (install.sh)"] --> B["git agent-start <task-name>"]
-    B --> C["Work inside .worktrees/<task-name>"]
-    C --> D["Commit changes to branch <task-name>"]
-    D --> E["Sync trunk: git fetch origin main"]
-    E --> F["Push branch & Open Pull Request"]
-    F --> G["Review & Merge PR to main"]
-    G --> H["git agent-stop <task-name>"]
+```text
+  ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
+  │   install.sh    │ ────> │ git agent-start │ ────> │ Commit & Push   │ ────> │ git agent-stop  │
+  │ Configure Git   │       │ Spawn Worktree  │       │ Open Pull Req   │       │ Teardown Branch │
+  └─────────────────┘       └─────────────────┘       └─────────────────┘       └─────────────────┘
 ```
 
 ---
 
 ## 1. Initialization
-When setting up a new repository or onboarding a new project, run:
+In your project repository, run:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/twoboots/troop/main/install.sh | bash
@@ -38,7 +34,7 @@ Whenever an agent or developer picks up a new task:
 git agent-start user-billing
 ```
 
-What occurs behind the scenes:
+Behind the scenes:
 1. `git fetch origin main` synchronizes your local repository with upstream changes.
 2. The base commit is resolved to `origin/main` (or local `main` if offline).
 3. `git worktree add .worktrees/user-billing -b user-billing $BASE` creates an ephemeral tree directory with its own independent `HEAD` and staging index.
@@ -54,9 +50,9 @@ cd .worktrees/user-billing
 ```
 
 Because `.worktrees/user-billing` is an independent working copy linked to the central `.git/` object store:
-- No files are locked or shared between trees.
-- Parallel test runners or build daemons run without conflicting ports or file locks.
-- The root workspace remains 100% clean.
+- No files or state are shared between trees.
+- Parallel test runners and builds execute without file collisions.
+- The root workspace remains untouched.
 
 To check on all parallel monkeys working across the repository:
 
@@ -68,7 +64,7 @@ git troop
 
 ## 4. Trunk Synchronization
 
-Before opening a pull request, synchronize your worktree branch with latest `main`:
+Before opening a pull request, synchronise your worktree branch with latest `main`:
 
 ```bash
 git fetch origin main
@@ -123,4 +119,4 @@ Each agent can test, run build pipelines, and commit independently without race 
 ### Human & Agent Pairing
 A human developer can inspect an agent's work at any time by simply navigating into `.worktrees/<task-name>`, reviewing unstaged edits, running tests, or offering interactive feedback.
 
-When coupled with Spec-Driven Development, explore how Troop powers the [Cooper SDD Framework](../cooper-integration.md).
+To combine worktree isolation with living capability specs, see [Cooper Integration](../cooper-integration.md).

@@ -1,8 +1,8 @@
 # Getting Started with Troop
 
-[Troop](https://github.com/twoBoots/troop) brings structure to concurrent human and AI development by treating all contributors as a **troop of code monkeys working in trees**.
+[Troop](https://github.com/twoBoots/troop) structures concurrent human and AI development as a **troop of code monkeys working in trees**.
 
-Instead of juggling stashes, dealing with dirty working directories, or causing merge conflicts on the main trunk, Troop leverages Git worktrees under `.worktrees/` to give every task an isolated, ephemeral workspace.
+Troop uses Git worktrees under `.worktrees/` to give every task an isolated, ephemeral workspace.
 
 ---
 
@@ -22,12 +22,6 @@ Install Troop into your target Git repository using the one-line installer:
 curl -fsSL https://raw.githubusercontent.com/twoboots/troop/main/install.sh | bash
 ```
 
-Alternatively, if running from a local clone:
-
-```bash
-/path/to/troop/install.sh /path/to/your-project
-```
-
 For full setup details and manual configuration instructions, see the [Installation Guide](../installation.md).
 
 ---
@@ -35,7 +29,7 @@ For full setup details and manual configuration instructions, see the [Installat
 ## Your First Monkey Tree in 3 Steps
 
 ### 1. Spawn an Isolated Tree
-To start a new task without interrupting your current workspace or dirtying `main`:
+Spawn an isolated worktree for the task:
 
 ```bash
 git agent-start auth-login
@@ -53,7 +47,7 @@ Navigate into the newly spawned worktree:
 cd .worktrees/auth-login
 ```
 
-From here, you or an AI agent can edit code, run test suites, commit changes, and push upstream. The main trunk directory remains completely untouched.
+Edit code, run tests, and commit inside the worktree without affecting the root workspace.
 
 ### 3. Review Active Trees
 To view all monkeys currently working across the repository:
@@ -78,7 +72,7 @@ Once your task has been reviewed and merged into `main`:
 # Return to repository root
 cd ../..
 
-# Safely teardown worktree and delete the local branch
+# Teardown worktree and delete local branch
 git agent-stop auth-login
 ```
 
@@ -97,7 +91,7 @@ When Troop is installed, it injects minimal operational rules into your reposito
 - **Tear down after merge**: Run `git agent-stop <task-name>` once the task PR is merged.
 ```
 
-For higher-level governance, test-driven development (TDD), and living capability specifications, see how Troop powers the [Cooper SDD Integration](../cooper-integration.md).
+For Spec-Driven Development (SDD) and living specs, see [Cooper Integration](../cooper-integration.md).
 
 ---
 

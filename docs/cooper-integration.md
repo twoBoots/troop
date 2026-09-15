@@ -1,38 +1,30 @@
 # Cooper SDD Integration
 
-[Troop](https://github.com/twoBoots/troop) acts as the fundamental worktree isolation engine powering [Cooper](https://github.com/twoBoots/cooper), an autonomous Spec-Driven Development (SDD) framework.
+[Troop](https://github.com/twoBoots/troop) provides worktree isolation for [Cooper](https://twoboots.github.io/cooper/), an autonomous Spec-Driven Development (SDD) framework.
 
 ---
 
 ## Why Cooper Relies on Troop
 
-Autonomous AI agents executing complex software engineering initiatives face two major challenges:
-1. **Context Drift**: Hallucinating requirements or drifting from intended architecture.
-2. **Workspace Pollution**: Making unverified changes directly on the main branch or stomping over concurrent tasks.
-
-Cooper addresses context drift through **Living Capability Specifications** (`.cooper/specs/`) and explicit requirement diffs (Spec Deltas). 
-
-To solve workspace pollution, Cooper delegates entirely to **Troop** for complete file-level worktree isolation.
+Cooper pairs two mechanisms to prevent agent drift and corruption:
+1. **Living Capability Specifications** (`.cooper/specs/`): Eliminates requirement drift via explicit Spec Deltas.
+2. **Troop Worktree Isolation** (`.worktrees/`): Eliminates trunk corruption by isolating each track in its own worktree.
 
 ---
 
 ## Architecture Synergy
 
-```mermaid
-flowchart TD
-    subgraph Cooper["Cooper Spec-Driven Development"]
-        Specs["Living Capability Specs (.cooper/specs/)"]
-        Deltas["Spec Deltas (+ / - requirements)"]
-        TDD["Strict TDD Loop & Git Notes"]
-    end
-
-    subgraph Troop["Troop Worktree Isolation"]
-        Aliases["Git Aliases (.gitaliases)"]
-        Worktrees[".worktrees/<track_id>/"]
-        Clean["Zero Trunk Contamination"]
-    end
-
-    Cooper -->|"Executes Inside"| Troop
+```text
+  ┌─────────────────────────────────┐
+  │  Cooper (Spec-Driven Dev)       │
+  │  Living Specs & Spec Deltas     │
+  └────────────────┬────────────────┘
+                   │ runs inside
+                   ▼
+  ┌─────────────────────────────────┐
+  │  Troop (Worktree Isolation)     │
+  │  .worktrees/<track_id>/         │
+  └─────────────────────────────────┘
 ```
 
 ---
@@ -48,7 +40,7 @@ curl -fsSL https://raw.githubusercontent.com/twoBoots/cooper/main/install.sh | b
 The installer runs Troop's installation pipeline:
 1. Executes Troop's installer to configure `.gitaliases` (`git agent-start`, `git agent-stop`, `git troop`).
 2. Configures `.gitignore` to ignore the `.worktrees/` directory.
-3. Relocates `TROOP.md` into `.cooper/TROOP.md` to maintain a clean project root.
+3. Moves `TROOP.md` into `.cooper/TROOP.md` to keep the project root clean.
 4. Extends `AGENTS.md` with guidelines instructing AI agents to always operate inside Troop worktrees.
 
 ---
