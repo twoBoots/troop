@@ -1,0 +1,12 @@
+/* Feature card details link styling */
+.VPFeature .details a {
+  color: var(--vp-c-brand-1);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.25s;
+}
+
+.VPFeature .details a:hover {
+  color: var(--vp-c-brand-2);
+}
