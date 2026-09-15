@@ -52,12 +52,31 @@ Troop provides three core Git aliases:
 
 ## The Troop Lifecycle
 
-```text
-  ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
-  │   Main Trunk    │ ────> │  Isolated Tree  │ ────> │ Feature Branch  │ ────> │ Worktree Remove │
-  │     (main)      │       │  agent-start    │       │ Commit & Push   │       │   agent-stop    │
-  └─────────────────┘       └─────────────────┘       └─────────────────┘       └─────────────────┘
-```
+<div class="lifecycle-flow">
+  <div class="lifecycle-card">
+    <span class="lifecycle-badge">Step 1</span>
+    <div class="lifecycle-step">Main Trunk</div>
+    <div class="lifecycle-sub">main branch baseline</div>
+  </div>
+  <div class="lifecycle-arrow">→</div>
+  <div class="lifecycle-card">
+    <span class="lifecycle-badge">Step 2</span>
+    <div class="lifecycle-step">git agent-start</div>
+    <div class="lifecycle-sub">Spawn Isolated Tree</div>
+  </div>
+  <div class="lifecycle-arrow">→</div>
+  <div class="lifecycle-card">
+    <span class="lifecycle-badge">Step 3</span>
+    <div class="lifecycle-step">Feature Branch</div>
+    <div class="lifecycle-sub">Commit &amp; Open PR</div>
+  </div>
+  <div class="lifecycle-arrow">→</div>
+  <div class="lifecycle-card">
+    <span class="lifecycle-badge">Step 4</span>
+    <div class="lifecycle-step">git agent-stop</div>
+    <div class="lifecycle-sub">Clean Tree Teardown</div>
+  </div>
+</div>
 
 ---
 
