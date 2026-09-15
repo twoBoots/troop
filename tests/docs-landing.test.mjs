@@ -24,7 +24,10 @@ test('Landing page docs/index.md exists with required layout and sections', () =
   // Core pillars
   assert.ok(content.includes('Monkeys') || content.includes('The Troop'), 'must feature Code Monkeys / The Troop');
   assert.ok(content.includes('https://github.com/twoBoots/troop'), 'must link Troop to https://github.com/twoBoots/troop');
-  assert.ok(content.includes('https://github.com/twoBoots/cooper'), 'must link Cooper to https://github.com/twoBoots/cooper');
+  assert.ok(
+    content.includes('https://twoboots.github.io/cooper') || content.includes('https://github.com/twoBoots/cooper'),
+    'must link Cooper to https://twoboots.github.io/cooper/ or https://github.com/twoBoots/cooper'
+  );
   assert.ok(content.includes('agent-start'), 'must highlight agent-start');
   assert.ok(content.includes('agent-stop'), 'must highlight agent-stop');
   assert.ok(content.includes('git troop'), 'must highlight git troop');
